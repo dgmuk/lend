@@ -1,1 +1,431 @@
-1
+<!DOCTYPE html>
+<html lang="ru" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Balance | Программа для мужчин от Дмитрия Мухина</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* gray-900 */
+        }
+        .hero-section {
+            background-image: linear-gradient(rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.85)), url('https://i.ibb.co/tpC8W3TY/dmitry-main.jpg');
+            background-size: cover;
+            background-position: center top;
+        }
+        .accent-color {
+            color: #F97316; /* orange-500 */
+        }
+        .btn-accent {
+            background-color: #F97316;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-accent:hover {
+            background-color: #EA580C; /* orange-600 */
+            transform: translateY(-3px);
+        }
+        .section-title {
+            font-weight: 900;
+            font-size: 2.25rem; /* text-4xl */
+            line-height: 2.5rem;
+        }
+        @media (min-width: 640px) {
+            .section-title {
+                font-size: 3rem; /* sm:text-5xl */
+                line-height: 1.1;
+            }
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 1.25rem; /* 5 */
+            top: 1.25rem;
+            bottom: -1.25rem;
+            width: 2px;
+            background-color: #374151; /* gray-700 */
+            transform: translateX(-50%);
+        }
+        .timeline-item:last-child::before {
+            display: none;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 1.25rem;
+            top: 0.75rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 9999px;
+            background-color: #F97316;
+            transform: translateX(-50%);
+            border: 2px solid #111827;
+        }
+        /* Animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <!-- Блок 1: Первый экран (Hero Section) -->
+    <section class="hero-section min-h-screen flex items-center">
+        <div class="container mx-auto max-w-5xl px-6 text-center text-white">
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight leading-tight">Устал от живота, вечной усталости и сорванных диет?</h1>
+            <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-300">Верни энергию, рельеф и контроль над своим телом за 9 недель по системной программе Body Balance. Без голодовок и жизни в спортзале.</p>
+            <a href="#program" class="btn-accent inline-block mt-10 text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg">
+                Узнать подробнее о программе
+            </a>
+        </div>
+    </section>
+
+    <div class="container mx-auto max-w-5xl px-6 py-16 md:py-24 space-y-16 md:space-y-24">
+
+        <!-- Блок 2: Боль и Узнавание -->
+        <section class="fade-in-up">
+            <h2 class="section-title text-center text-white">Если хотя бы 2 из этих пунктов про тебя — <br>ты в нужном месте:</h2>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="font-bold text-xl text-white">Вес растет, а энергия на нуле.</h3>
+                    <p class="mt-2 text-gray-400">Утром тяжело вставать, а к вечеру нет сил даже на семью.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="font-bold text-xl text-white">"Стрессовый" живот не уходит.</h3>
+                    <p class="mt-2 text-gray-400">Заедаешь напряженный день пиццей или сладким, а потом винишь себя.</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="font-bold text-xl text-white">Пробовал худеть, но всегда срываешься.</h3>
+                    <p class="mt-2 text-gray-400">Каждая новая диета заканчивается разочарованием и мыслью "я слабохарактерный".</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="font-bold text-xl text-white">В зеркале видишь уставшего мужчину.</h3>
+                    <p class="mt-2 text-gray-400">А хочется снова чувствовать себя сильным, здоровым и уверенным.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 3: Представление Решения и Эксперта -->
+        <section class="fade-in-up">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
+                <div class="md:col-span-2">
+                    <img src="https://i.ibb.co/2Y1WS4j/dmitry-consult.jpg" alt="Эксперт Дмитрий Мухин в процессе консультации" class="rounded-lg shadow-2xl w-full">
+                </div>
+                <div class="md:col-span-3">
+                    <h2 class="section-title text-white">Хватит бороться с собой. <br><span class="accent-color">Нужна система,</span> а не сила воли.</h2>
+                    <p class="mt-6 text-lg">Меня зовут Дмитрий Мухин, и за 10 лет работы в фитнесе я понял главное: мужчинам после 35 не нужны "голодные" марафоны и изнурительные тренировки. Вам нужна чёткая, встраиваемая в жизнь СИСТЕМА, которая учитывает ваш график, стресс и психологию.</p>
+                    <p class="mt-4 text-lg">Именно такую систему — Body Balance — я создал. По ней прошли уже более 50 занятых мужчин и добились результата.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 4: Как устроена программа -->
+        <section id="program" class="fade-in-up">
+            <h2 class="section-title text-center text-white">Полная перезагрузка твоего тела и привычек за 9 недель</h2>
+            <div class="mt-12 max-w-3xl mx-auto">
+                <div class="space-y-10">
+                    <!-- Timeline Item -->
+                    <div class="relative pl-10 timeline-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 1</p>
+                        <h3 class="font-bold text-xl text-white mt-1">Диагностика и фундамент</h3>
+                        <p class="mt-2">Провожу полный анализ твоего образа жизни, питания, стресса. Рассчитываем персональный план питания и тренировок, на который ты будешь опираться.</p>
+                    </div>
+                    <!-- Timeline Item -->
+                    <div class="relative pl-10 timeline-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 2</p>
+                        <h3 class="font-bold text-xl text-white mt-1">Система вместо силы воли</h3>
+                        <p class="mt-2">Создаем ритуалы, которые работают на автомате, даже когда нет мотивации.</p>
+                    </div>
+                    <!-- Timeline Item -->
+                    <div class="relative pl-10 timeline-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 3</p>
+                        <h3 class="font-bold text-xl text-white mt-1">Стратегия "возврата", а не "срыва"</h3>
+                        <p class="mt-2">Учимся выходить из откатов без чувства вины и продолжать движение.</p>
+                    </div>
+                    <!-- Timeline Item -->
+                    <div class="relative pl-10 timeline-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 4</p>
+                        <h3 class="font-bold text-xl text-white mt-1">Как действовать, когда "не хочется"</h3>
+                        <p class="mt-2">Осваиваем технику «5 минут победы», чтобы победить прокрастинацию.</p>
+                    </div>
+                     <!-- Timeline Item -->
+                    <div class="relative pl-10 timeline-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 5</p>
+                        <h3 class="font-bold text-xl text-white mt-1">Уверенность и новый образ тела</h3>
+                        <p class="mt-2">Работаем с восприятием себя и учимся видеть реальные изменения, а не только недостатки.</p>
+                    </div>
+                     <!-- Timeline Item -->
+                    <div class="relative pl-10 timeline-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 6</p>
+                        <h3 class="font-bold text-xl text-white mt-1">Разрыв цепочки "стресс-еда"</h3>
+                        <p class="mt-2">Находим твои эмоциональные триггеры и учимся справляться со стрессом без еды.</p>
+                    </div>
+                     <!-- Timeline Item -->
+                    <div class="relative pl-10 timeline-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 7</p>
+                        <h3 class="font-bold text-xl text-white mt-1">Борьба с перфекционизмом</h3>
+                        <p class="mt-2">Учимся ценить свой прогресс и избавляемся от ловушки "я сделал мало".</p>
+                    </div>
+                    <!-- Timeline Item -->
+                    <div class="relative pl-10 timeline-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <p class="text-sm font-bold accent-color">НЕДЕЛИ 8-9</p>
+                        <h3 class="font-bold text-xl text-white mt-1">Финал и новый старт</h3>
+                        <p class="mt-2">Фиксируем результат и создаем план, как поддерживать форму самостоятельно и не откатиться назад.</p>
+                    </div>
+                </div>
+                 <div class="text-center mt-12">
+                     <a href="#tariffs" class="btn-accent inline-block text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg">
+                        Хочу получить такую систему
+                    </a>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Блок 5: Что внутри -->
+        <section class="fade-in-up">
+            <h2 class="section-title text-center text-white">Внутри программы тебя ждёт:</h2>
+            <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="font-bold text-xl text-white">Персональный план питания</h3>
+                    <p class="mt-2 text-gray-400">Адаптированный под твой график и цели, без жёстких ограничений.</p>
+                </div>
+                <!-- Card -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="font-bold text-xl text-white">Программа тренировок (дом/зал)</h3>
+                    <p class="mt-2 text-gray-400">3-5 занятий в неделю, которые реально работают для твоей цели.</p>
+                </div>
+                <!-- Card -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="font-bold text-xl text-white">9 еженедельных видео-уроков</h3>
+                    <p class="mt-2 text-gray-400">Короткие и ёмкие видео (3-6 минут) по психологии и системным действиям.</p>
+                </div>
+                <!-- Card -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="font-bold text-xl text-white">Практические инструменты</h3>
+                    <p class="mt-2 text-gray-400">Интерактивные чек-листы и инструкции для внедрения привычек.</p>
+                </div>
+                <!-- Card -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="font-bold text-xl text-white">Моя личная поддержка в Telegram</h3>
+                    <p class="mt-2 text-gray-400">Ежедневные отчёты, ответы на вопросы, коррекция плана.</p>
+                </div>
+                <!-- Card -->
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <h3 class="font-bold text-xl text-white">Разбор анализов (опция)</h3>
+                    <p class="mt-2 text-gray-400">Корректировка плана на основе твоих медицинских показателей.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 6: Результаты -->
+        <section class="fade-in-up">
+            <h2 class="section-title text-center text-white">Это не просто обещания. <br>Это реальные результаты моих клиентов.</h2>
+            <div class="text-center mt-6">
+                <div class="inline-flex bg-gray-800 border border-gray-700 rounded-lg p-4 text-center mx-2">
+                    <p class="text-3xl font-black accent-color">-3-7 кг</p>
+                    <p class="ml-3 text-left text-sm">Средний результат<br>за 9 недель</p>
+                </div>
+                 <div class="inline-flex bg-gray-800 border border-gray-700 rounded-lg p-4 text-center mx-2 mt-4 sm:mt-0">
+                    <p class="text-3xl font-black accent-color">90%</p>
+                    <p class="ml-3 text-left text-sm">Клиентов сохраняют<br>результат через год</p>
+                </div>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Case 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
+                    <img src="https://i.ibb.co/xt4Xt33/alexey.jpg" alt="Клиент Алексей, результат программы Body Balance" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl text-white">Алексей, 42 года, руководитель</h3>
+                        <p class="mt-2 text-gray-400"><b class="text-gray-300">Было:</b> 105 кг, постоянная усталость, стрессовое переедание.</p>
+                        <p class="mt-1 text-gray-400"><b class="text-gray-300">Стало (через 9 недель):</b> 97 кг, появилась энергия на спорт после работы, живот стал заметно меньше.</p>
+                        <blockquote class="mt-4 border-l-4 border-orange-500 pl-4 italic text-gray-300">
+                            «Настоящий профессионал, который видит тебя целиком: тело, голову, образ жизни»
+                        </blockquote>
+                    </div>
+                </div>
+                <!-- Case 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
+                    <img src="https://i.ibb.co/ZzQQfGG/mikhail.jpg" alt="Клиент Михаил, результат программы Body Balance" class="w-full h-64 object-cover object-center">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl text-white">Михаил, 38 лет, IT-директор</h3>
+                        <p class="mt-2 text-gray-400"><b class="text-gray-300">Было:</b> Работал по 12 часов, ел фастфуд, весил 98 кг.</p>
+                        <p class="mt-1 text-gray-400"><b class="text-gray-300">Стало (через 9 недель):</b> Научился планировать питание, энергии хватает на все, минус 7 кг.</p>
+                        <blockquote class="mt-4 border-l-4 border-orange-500 pl-4 italic text-gray-300">
+                            «Это не просто диетолог и тренер, это твой наставник по жизни»
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 7: Тарифы -->
+        <section id="tariffs" class="fade-in-up">
+            <h2 class="section-title text-center text-white">Выбери свой формат для старта</h2>
+            <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Tariff 1 -->
+                <div class="bg-gray-800 p-8 rounded-lg border-2 border-gray-700 flex flex-col">
+                    <h3 class="text-2xl font-bold text-white">Базовый</h3>
+                    <p class="text-4xl font-black text-white mt-4">28 000 ₽ <span class="text-lg font-medium text-gray-400">/ 9 недель</span></p>
+                    <ul class="mt-6 space-y-3 text-gray-300 flex-grow">
+                        <li class="flex items-center">✓ Персональный план питания</li>
+                        <li class="flex items-center">✓ Программа тренировок</li>
+                        <li class="flex items-center">✓ 9 видео-уроков</li>
+                        <li class="flex items-center">✓ Практические инструменты</li>
+                        <li class="flex items-center">✓ Личная поддержка в Telegram</li>
+                    </ul>
+                    <a href="#form" class="mt-8 block w-full text-center bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors">
+                        Оставить заявку
+                    </a>
+                </div>
+                <!-- Tariff 2 -->
+                <div class="bg-gray-800 p-8 rounded-lg border-2 border-orange-500 relative flex flex-col">
+                    <div class="absolute top-0 right-8 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-b-lg">ПОПУЛЯРНЫЙ</div>
+                    <h3 class="text-2xl font-bold text-white">Расширенный</h3>
+                    <p class="text-4xl font-black text-white mt-4">34 000 ₽ <span class="text-lg font-medium text-gray-400">/ 9 недель</span></p>
+                    <p class="mt-4 font-bold accent-color">Всё из "Базового" +</p>
+                    <ul class="mt-2 space-y-3 text-gray-300 flex-grow">
+                        <li class="flex items-center font-bold">✓ Разбор медицинских анализов</li>
+                        <li class="flex items-center font-bold">✓ Углубленная корректировка нутриентов</li>
+                    </ul>
+                    <a href="#form" class="btn-accent mt-8 block w-full text-center text-white font-bold py-3 px-6 rounded-lg">
+                        Оставить заявку
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок 8: Финальный призыв -->
+        <section id="form" class="fade-in-up">
+            <div class="bg-gray-800 rounded-lg p-8 md:p-12 text-center">
+                <h2 class="section-title text-white">Готов вернуть себе тело, которым можно гордиться?</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-400">Хватит откладывать. Каждый день промедления — это еще один день жизни в теле, которое тебя не устраивает. Сделай первый шаг прямо сейчас. Оставь заявку, мы созвонимся для короткой диагностики, и если я пойму, что могу тебе помочь — начнем твою трансформацию.</p>
+                <!-- ИЗМЕНЕНО: Добавлен id к форме и полям, и div для сообщений -->
+                <form id="tg-form" class="mt-8 max-w-lg mx-auto space-y-4">
+                    <input type="text" id="tg-name" placeholder="Ваше имя" class="w-full p-4 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                    <input type="text" id="tg-contact" placeholder="Ваш Телефон / Telegram" class="w-full p-4 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
+                    <button type="submit" class="btn-accent w-full text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg disabled:opacity-50">
+                        Начать трансформацию
+                    </button>
+                    <div id="form-message" class="mt-4 text-sm"></div>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800">
+        <div class="container mx-auto max-w-5xl px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2025 Дмитрий Мухин. Программа Body Balance.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Простая анимация появления блоков при прокрутке
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- СКРИПТ ОТПРАВКИ ФОРМЫ В TELEGRAM ---
+            const tgForm = document.getElementById('tg-form');
+            if (tgForm) {
+                const formMessage = document.getElementById('form-message');
+                const submitButton = tgForm.querySelector('button[type="submit"]');
+
+                tgForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    const TOKEN = "8021166658:AAFbtGwT-xJeJM-dSoofAbn3Ttw4oa4kcnA";
+                    const CHAT_ID = "-1001715276709";
+                    const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+
+                    const nameInput = document.getElementById('tg-name');
+                    const contactInput = document.getElementById('tg-contact');
+
+                    if (!nameInput.value || !contactInput.value) {
+                        formMessage.textContent = 'Пожалуйста, заполните все поля.';
+                        formMessage.className = 'mt-4 text-sm text-red-400';
+                        return;
+                    }
+                    
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Отправка...';
+
+                    let message = `<b>Новая заявка с сайта Body Balance!</b>\n`;
+                    message += `<b>Имя: </b> ${nameInput.value}\n`;
+                    message += `<b>Контакт: </b> ${contactInput.value}`;
+
+                    try {
+                        const response = await fetch(URI_API, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                chat_id: CHAT_ID,
+                                parse_mode: 'html',
+                                text: message
+                            })
+                        });
+
+                        const data = await response.json();
+
+                        if (data.ok) {
+                            formMessage.textContent = '✅ Заявка успешно отправлена! Скоро я с вами свяжусь.';
+                            formMessage.className = 'mt-4 text-sm text-green-400';
+                            tgForm.reset();
+                        } else {
+                            throw new Error(data.description);
+                        }
+
+                    } catch (error) {
+                        console.error('Ошибка отправки:', error);
+                        formMessage.textContent = '❌ Произошла ошибка. Пожалуйста, попробуйте еще раз или свяжитесь со мной напрямую.';
+                        formMessage.className = 'mt-4 text-sm text-red-400';
+                    } finally {
+                        setTimeout(() => {
+                           submitButton.disabled = false;
+                           submitButton.textContent = 'Начать трансформацию';
+                           formMessage.textContent = '';
+                        }, 5000);
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
