@@ -72,20 +72,19 @@
             animation: pulse-glow 2.5s infinite ease-in-out;
         }
         .btn:hover {
-            transform: scale(1.08); /* Увеличение при наведении стало чуть больше */
+            transform: scale(1.08);
             animation: none;
-            box-shadow: 0 0 35px rgba(249, 115, 22, 0.8); /* Свечение при наведении стало ярче */
+            box-shadow: 0 0 35px rgba(249, 115, 22, 0.8);
         }
 
-        /* ИЗМЕНЕНО: Анимация мерцания стала более явной */
         @keyframes pulse-glow {
             0% {
                 transform: scale(1);
                 box-shadow: 0 0 15px rgba(249, 115, 22, 0.3);
             }
             50% {
-                transform: scale(1.03); /* Добавлено легкое увеличение */
-                box-shadow: 0 0 30px rgba(249, 115, 22, 0.5); /* Свечение стало интенсивнее */
+                transform: scale(1.03);
+                box-shadow: 0 0 30px rgba(249, 115, 22, 0.5);
             }
             100% {
                 transform: scale(1);
@@ -112,6 +111,24 @@
         .interactive-card:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
+        }
+
+        /* --- СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА --- */
+        .modal {
+            display: none; /* Скрыто по умолчанию */
+            transition: opacity 0.3s ease;
+        }
+        .modal.is-visible {
+            display: flex; /* Показываем при активации */
+        }
+        .modal-content {
+            transform: scale(0.9);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .modal.is-visible .modal-content {
+            transform: scale(1);
+            opacity: 1;
         }
     </style>
 </head>
@@ -298,27 +315,82 @@
                 </div>
             </div>
 
+            <!-- ИЗМЕНЕНО: Добавлены 2 новые карточки -->
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 interactive-card">
+                <!-- Case 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 interactive-card flex flex-col">
                     <img src="images/alexey.jpg" alt="Клиент Алексей, результат программы Body Balance" class="w-full h-64 object-cover object-center">
-                    <div class="p-6">
+                    <div class="p-6 flex flex-col flex-grow">
                         <h3 class="font-bold text-xl text-white">Алексей, 42 года, руководитель</h3>
                         <p class="mt-2 text-gray-400"><b class="text-gray-300">Было:</b> 105 кг, постоянная усталость, стрессовое переедание.</p>
                         <p class="mt-1 text-gray-400"><b class="text-gray-300">Стало (через 9 недель):</b> 97 кг, появилась энергия на спорт после работы, живот стал заметно меньше.</p>
                         <blockquote class="mt-4 border-l-4 border-orange-500 pl-4 italic text-gray-300">
                             «Настоящий профессионал, который видит тебя целиком: тело, голову, образ жизни»
                         </blockquote>
+                        <div class="mt-auto pt-6">
+                            <button class="details-btn text-orange-500 font-semibold hover:text-orange-400 transition-colors"
+                                data-title="Кейс: Алексей, 42 года"
+                                data-details="Алексей пришел с проблемой 'заедания' стресса после тяжелого рабочего дня. Мы начали не с жесткой диеты, а с выстраивания вечерних ритуалов, которые помогли снять напряжение без еды. Внедрили короткие, но интенсивные 30-минутные тренировки 4 раза в неделю, которые он мог делать даже дома. Ключевым моментом стала работа с планированием рациона на 2-3 дня вперед, что убрало необходимость принимать решения в состоянии усталости.">
+                                Узнать подробнее →
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 interactive-card">
+                <!-- Case 2 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 interactive-card flex flex-col">
                     <img src="images/mikhail.jpg" alt="Клиент Михаил, результат программы Body Balance" class="w-full h-64 object-cover object-center">
-                    <div class="p-6">
+                    <div class="p-6 flex flex-col flex-grow">
                         <h3 class="font-bold text-xl text-white">Михаил, 38 лет, IT-директор</h3>
                         <p class="mt-2 text-gray-400"><b class="text-gray-300">Было:</b> Работал по 12 часов, ел фастфуд, весил 98 кг.</p>
                         <p class="mt-1 text-gray-400"><b class="text-gray-300">Стало (через 9 недель):</b> Научился планировать питание, энергии хватает на все, минус 7 кг.</p>
                         <blockquote class="mt-4 border-l-4 border-orange-500 pl-4 italic text-gray-300">
                             «Это не просто диетолог и тренер, это твой наставник по жизни»
                         </blockquote>
+                        <div class="mt-auto pt-6">
+                            <button class="details-btn text-orange-500 font-semibold hover:text-orange-400 transition-colors"
+                                data-title="Кейс: Михаил, 38 лет"
+                                data-details="Михаил, как IT-директор, имел хаотичный график и питался в основном доставкой. Главной задачей было встроить систему питания в его рабочий день. Мы разработали 'конструктор обедов', который можно было собрать за 5 минут, и внедрили правило 'никакой работы во время еды'. Тренировки были сфокусированы на силовых упражнениях для повышения уровня тестостерона и энергии. Результат — не только минус вес, но и значительный рост продуктивности.">
+                                Узнать подробнее →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Case 3 (НОВЫЙ) -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 interactive-card flex flex-col">
+                    <img src="images/valera.jpg" alt="Клиент Валерий, результат программы Body Balance" class="w-full h-64 object-cover object-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-bold text-xl text-white">Валерий, 46 лет, менеджер</h3>
+                        <p class="mt-2 text-gray-400"><b class="text-gray-300">Было:</b> 120 кг, одышка, боли в суставах, высокое давление.</p>
+                        <p class="mt-1 text-gray-400"><b class="text-gray-300">Стало (за год):</b> Минус 30 кг, давление в норме, суставы не болят, появилась легкость и уверенность.</p>
+                        <blockquote class="mt-4 border-l-4 border-orange-500 pl-4 italic text-gray-300">
+                            «Пришел к Дмитрию на месяц, остался на год, работаем дальше.»
+                        </blockquote>
+                        <div class="mt-auto pt-6">
+                            <button class="details-btn text-orange-500 font-semibold hover:text-orange-400 transition-colors"
+                                data-title="Кейс: Валерий, 46 лет"
+                                data-details="Кейс Валерия — это пример глубокой трансформации здоровья. Мы начали с очень щадящих нагрузок, чтобы не перегружать суставы, и полностью перестроили рацион, сфокусировавшись на противовоспалительных продуктах. Главным прорывом стала регулярность: Валерий научился видеть в тренировках не наказание, а источник энергии. Спустя год это уже не просто 'минус 30 кг', а совершенно другое качество жизни, где нет места одышке и высокому давлению.">
+                                Узнать подробнее →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Case 4 (НОВЫЙ) -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 interactive-card flex flex-col">
+                    <img src="images/jora.jpg" alt="Клиент Георгий, результат программы Body Balance" class="w-full h-64 object-cover object-center">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="font-bold text-xl text-white">Георгий, 32 года, свой бизнес</h3>
+                        <p class="mt-2 text-gray-400"><b class="text-gray-300">Было:</b> 88 кг, хроническая усталость, апатия, скрытый андрогенный дефицит.</p>
+                        <p class="mt-1 text-gray-400"><b class="text-gray-300">Стало (за 3 месяца):</b> Минус 7 кг, прилив сил, рост мышечной массы, получил повышение.</p>
+                        <blockquote class="mt-4 border-l-4 border-orange-500 pl-4 italic text-gray-300">
+                            «Дима очень помог в плане нормализации питания и выстраивания тренировочного процесса»
+                        </blockquote>
+                        <div class="mt-auto pt-6">
+                            <button class="details-btn text-orange-500 font-semibold hover:text-orange-400 transition-colors"
+                                data-title="Кейс: Георгий, 32 года"
+                                data-details="Георгий столкнулся с проблемой, знакомой многим предпринимателям: выгорание и апатия на фоне 'нормального' веса. Анализы показали скрытый андрогенный дефицит. Мы сделали акцент на силовые тренировки для стимуляции выработки тестостерона и добавили в рацион продукты, богатые цинком и полезными жирами. Георгий не просто похудел — он вернул себе 'драйв' и энергию, что напрямую отразилось на его бизнесе и привело к карьерному росту.">
+                                Узнать подробнее →
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -376,6 +448,15 @@
 
     </div>
 
+    <!-- Модальное окно -->
+    <div id="details-modal" class="modal fixed inset-0 bg-black bg-opacity-80 items-center justify-center p-4 z-50">
+        <div class="modal-content bg-gray-800 rounded-lg p-8 max-w-2xl w-full relative border border-gray-700 shadow-2xl">
+            <button id="close-modal-btn" class="absolute top-3 right-4 text-gray-500 hover:text-white text-4xl leading-none font-bold transition-colors">&times;</button>
+            <h3 id="modal-title" class="text-2xl font-bold text-white mb-4"></h3>
+            <p id="modal-text" class="text-gray-300 whitespace-pre-line"></p>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="border-t border-gray-800">
         <div class="container mx-auto max-w-5xl px-6 py-6 text-center text-gray-500">
@@ -384,7 +465,6 @@
     </footer>
 
     <script>
-        // Простая анимация появления блоков при прокрутке
         document.addEventListener('DOMContentLoaded', () => {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -400,7 +480,6 @@
                 observer.observe(el);
             });
 
-            // --- СКРИПТ ОТПРАВКИ ФОРМЫ В TELEGRAM ---
             const tgForm = document.getElementById('tg-form');
             if (tgForm) {
                 const formMessage = document.getElementById('form-message');
@@ -462,6 +541,46 @@
                            submitButton.textContent = 'Начать трансформацию';
                            formMessage.textContent = '';
                         }, 5000);
+                    }
+                });
+            }
+
+            // --- СКРИПТ ДЛЯ МОДАЛЬНОГО ОКНА ---
+            const detailsButtons = document.querySelectorAll('.details-btn');
+            const modal = document.getElementById('details-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const modalTitle = document.getElementById('modal-title');
+            const modalText = document.getElementById('modal-text');
+
+            if (modal) {
+                detailsButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const title = button.dataset.title;
+                        const details = button.dataset.details;
+
+                        modalTitle.textContent = title;
+                        modalText.textContent = details;
+                        
+                        modal.classList.add('is-visible');
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+
+                const closeModal = () => {
+                    modal.classList.remove('is-visible');
+                    document.body.style.overflow = 'auto';
+                };
+
+                closeModalBtn.addEventListener('click', closeModal);
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeModal();
+                    }
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modal.classList.contains('is-visible')) {
+                        closeModal();
                     }
                 });
             }
