@@ -215,7 +215,7 @@
                 <div class="md:col-span-3">
                     <h2 class="section-title text-white">Хватит бороться с собой. <br><span class="accent-color">Нужна система,</span> а не сила воли.</h2>
                     <p class="mt-6 text-lg">Меня зовут Дмитрий Мухин, и за 10 лет работы в фитнесе я понял главное: мужчинам после 35 не нужны "голодные" марафоны и изнурительные тренировки. Вам нужна чёткая, встраиваемая в жизнь СИСТЕМА, которая учитывает ваш график, стресс и психологию.</p>
-                    <p class="mt-4 text-lg">Именно такую систему — Body Balance — я создал. По ней прошли уже более 50 занятых мужчин и добились результата.</p>
+                    <p class="mt-4 text-lg">Именно такую систему:<span class="accent-color">«Body Balance»</span> - я создал. По ней прошли уже более 50 занятых мужчин и добились результата.</p>
                 </div>
             </div>
         </section>
@@ -299,7 +299,6 @@
                     </div>
                 </div>
                 
-                <!-- НОВЫЙ БЛОК ПОСЛЕ 9 НЕДЕЛЬ -->
                 <div class="mt-10 fade-in-up">
                     <div class="bg-gray-800 p-6 rounded-lg border border-orange-500/50 interactive-card text-center">
                          <h3 class="font-bold text-xl text-white mt-1">💡 После 9 недель:</h3>
@@ -512,9 +511,9 @@
 
         <!-- Блок 8: Финальный призыв -->
         <section id="form" class="fade-in-up">
-            <div class="bg-gray-800 rounded-lg p-8 md:p-12 text-center interactive-card">
+            <div class="bg-gray-800 rounded-lg p-8 md:p-12 text-center border border-gray-700 interactive-card">
                 <h2 class="text-3xl sm:text-4xl font-black text-white">Готов вернуть себе тело, которым можно гордиться?</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed text-gray-400">Хватит откладывать. Каждый день промедления,это еще один день жизни в теле, которое тебя не устраивает. Сделай первый шаг прямо сейчас. Оставь заявку, мы созвонимся для короткой диагностики, и если я пойму, что могу тебе помочь - начнем твою трансформацию.</p>
+                <p class="mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed text-gray-400">Хватит откладывать. Каждый день промедления — это еще один день жизни в теле, которое тебя не устраивает. Сделай первый шаг прямо сейчас. Оставь заявку, мы созвонимся для короткой диагностики, и если я пойму, что могу тебе помочь — начнем твою трансформацию.</p>
                 <form id="tg-form" class="mt-8 max-w-lg mx-auto space-y-4">
                     <input type="text" id="tg-name" placeholder="Ваше имя" class="w-full p-4 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
                     <input type="text" id="tg-contact" placeholder="Ваш Телефон / Telegram" class="w-full p-4 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
@@ -528,7 +527,7 @@
 
         <!-- Блок с видеоплеером -->
         <section class="fade-in-up">
-            <div class="bg-gray-800 rounded-lg p-8 md:p-12 text-center interactive-card">
+            <div class="bg-gray-800 rounded-lg p-8 md:p-12 text-center border border-gray-700 interactive-card">
                 <h2 class="text-3xl sm:text-4xl font-black text-white">Посмотрите, как это работает изнутри</h2>
                 <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-400">Я записал короткое видео, где рассказываю о философии программы и показываю, как выглядит личный кабинет участника.</p>
                 <div class="mt-8 rounded-lg overflow-hidden shadow-2xl">
@@ -540,7 +539,7 @@
         
         <!-- Блок FAQ -->
         <section class="fade-in-up">
-            <div class="bg-gray-800 rounded-lg p-8 md:p-12 interactive-card">
+            <div class="bg-gray-800 rounded-lg p-8 md:p-12 border border-gray-700 interactive-card">
                 <h2 class="section-title text-center text-white">Остались вопросы?</h2>
                 <div class="mt-8 max-w-3xl mx-auto" id="faq-container">
                     <!-- Вопрос 1 -->
@@ -797,6 +796,13 @@
                 faqItems.forEach(item => {
                     const question = item.querySelector('.faq-question');
                     question.addEventListener('click', () => {
+                        // Закрываем все остальные открытые вопросы
+                        faqItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('is-open');
+                            }
+                        });
+                        // Открываем или закрываем текущий
                         item.classList.toggle('is-open');
                     });
                 });
