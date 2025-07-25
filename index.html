@@ -106,11 +106,12 @@
         }
 
         .interactive-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
         .interactive-card:hover {
             transform: translateY(-5px) scale(1.02);
             box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
+            border-color: #14b8a6; /* Tailwind цвет teal-500 */
         }
 
         /* --- СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА --- */
@@ -130,6 +131,22 @@
             transform: scale(1);
             opacity: 1;
         }
+
+        /* ИСПРАВЛЕНО: Анимация для заголовка */
+        .title-glow {
+            animation: title-breathing 3s infinite ease-in-out;
+        }
+        @keyframes title-breathing {
+            0% {
+                text-shadow: 0 0 10px rgba(249, 115, 22, 0.4), 0 0 20px rgba(249, 115, 22, 0.2);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(249, 115, 22, 0.7), 0 0 40px rgba(249, 115, 22, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 10px rgba(249, 115, 22, 0.4), 0 0 20px rgba(249, 115, 22, 0.2);
+            }
+        }
     </style>
 </head>
 <body class="text-gray-300">
@@ -137,7 +154,7 @@
     <!-- Блок 1: Первый экран (Hero Section) -->
     <section class="bg-gray-900 py-24 sm:py-40">
         <div class="container mx-auto max-w-5xl px-6 text-center text-white">
-            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight leading-tight">Устал от живота, вечной усталости и сорванных диет?</h1>
+            <h1 class="text-4xl md:text-5xl font-black uppercase tracking-tight leading-tight title-glow">Устал от живота, вечной усталости и сорванных диет?</h1>
             <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-300">Верни энергию, рельеф и контроль над своим телом за 9 недель по системной <span class="accent-color font-bold">программе Body Balance</span>. Без голодовок и жизни в спортзале.</p>
             <a href="#program" class="btn btn-accent inline-block mt-10 text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg">
                 Узнать подробнее о программе
@@ -152,18 +169,22 @@
             <h2 class="section-title text-center text-white">Если хотя бы 2 из этих пунктов про тебя — <br>ты в нужном месте:</h2>
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                    <svg class="w-10 h-10 accent-color mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008ZM12 15V8.25" /></svg>
                     <h3 class="font-bold text-xl text-white">Вес растет, а энергия на нуле.</h3>
                     <p class="mt-2 text-gray-400">Утром тяжело вставать, а к вечеру нет сил даже на семью.</p>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                    <svg class="w-10 h-10 accent-color mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" /></svg>
                     <h3 class="font-bold text-xl text-white">"Стрессовый" живот не уходит.</h3>
                     <p class="mt-2 text-gray-400">Заедаешь напряженный день пиццей или сладким, а потом винишь себя.</p>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                    <svg class="w-10 h-10 accent-color mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 11.667 0l3.181-3.183m-4.991-2.691v-4.992a2.25 2.25 0 0 0-2.25-2.25h-4.5a2.25 2.25 0 0 0-2.25 2.25v4.992m11.667 0-3.181 3.183a8.25 8.25 0 0 1-11.667 0l-3.181-3.183" /></svg>
                     <h3 class="font-bold text-xl text-white">Пробовал худеть, но всегда срываешься.</h3>
                     <p class="mt-2 text-gray-400">Каждая новая диета заканчивается разочарованием и мыслью "я слабохарактерный".</p>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                    <svg class="w-10 h-10 accent-color mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.182 16.318A4.5 4.5 0 0 0 18 12a4.5 4.5 0 0 0-3.818-4.318M15.182 16.318A4.5 4.5 0 0 1 12 18a4.5 4.5 0 0 1-3.182-1.682M12 18V9.75M12 12H4.5M12 12H19.5" /></svg>
                     <h3 class="font-bold text-xl text-white">В зеркале видишь уставшего мужчину.</h3>
                     <p class="mt-2 text-gray-400">А хочется снова чувствовать себя сильным, здоровым и уверенным.</p>
                 </div>
@@ -275,26 +296,32 @@
             <h2 class="section-title text-center text-white">Внутри программы тебя ждёт:</h2>
             <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                    <svg class="w-10 h-10 accent-color mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h7.5M8.25 12h7.5m-7.5 5.25h7.5M3.75 6.75h.007v.008H3.75V6.75Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM3.75 12h.007v.008H3.75V12Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm-.375 5.25h.007v.008H3.75v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" /></svg>
                     <h3 class="font-bold text-xl text-white">Персональный план питания</h3>
                     <p class="mt-2 text-gray-400">Адаптированный под твой график и цели, без жёстких ограничений.</p>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                    <svg class="w-10 h-10 accent-color mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" /></svg>
                     <h3 class="font-bold text-xl text-white">Программа тренировок (дом/зал)</h3>
                     <p class="mt-2 text-gray-400">3-5 занятий в неделю, которые реально работают для твоей цели.</p>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                    <svg class="w-10 h-10 accent-color mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9A2.25 2.25 0 0 0 13.5 5.25h-9a2.25 2.25 0 0 0-2.25 2.25v9A2.25 2.25 0 0 0 4.5 18.75Z" /></svg>
                     <h3 class="font-bold text-xl text-white">9 еженедельных видео-уроков</h3>
                     <p class="mt-2 text-gray-400">Короткие и ёмкие видео (3-6 минут) по психологии и системным действиям.</p>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                    <svg class="w-10 h-10 accent-color mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12" /></svg>
                     <h3 class="font-bold text-xl text-white">Практические инструменты</h3>
                     <p class="mt-2 text-gray-400">Интерактивные чек-листы и инструкции для внедрения привычек.</p>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                    <svg class="w-10 h-10 accent-color mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" /></svg>
                     <h3 class="font-bold text-xl text-white">Моя личная поддержка в Telegram</h3>
                     <p class="mt-2 text-gray-400">Ежедневные отчёты, ответы на вопросы, коррекция плана.</p>
                 </div>
                 <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                    <svg class="w-10 h-10 accent-color mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.5h-8.01a1.5 1.5 0 0 1-1.5-1.5v-12a1.5 1.5 0 0 1 1.5-1.5h11.25a1.5 1.5 0 0 1 1.5 1.5v5.25" /></svg>
                     <h3 class="font-bold text-xl text-white">Разбор анализов (опция)</h3>
                     <p class="mt-2 text-gray-400">Корректировка плана на основе твоих медицинских показателей.</p>
                 </div>
@@ -315,7 +342,6 @@
                 </div>
             </div>
 
-            <!-- ИЗМЕНЕНО: Добавлены 2 новые карточки -->
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Case 1 -->
                 <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 interactive-card flex flex-col">
@@ -355,7 +381,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Case 3 (НОВЫЙ) -->
+                <!-- Case 3 -->
                 <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 interactive-card flex flex-col">
                     <img src="images/valera.jpg" alt="Клиент Валерий, результат программы Body Balance" class="w-full h-64 object-cover object-center">
                     <div class="p-6 flex flex-col flex-grow">
@@ -374,7 +400,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Case 4 (НОВЫЙ) -->
+                <!-- Case 4 -->
                 <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 interactive-card flex flex-col">
                     <img src="images/jora.jpg" alt="Клиент Георгий, результат программы Body Balance" class="w-full h-64 object-cover object-center">
                     <div class="p-6 flex flex-col flex-grow">
@@ -446,6 +472,18 @@
             </div>
         </section>
 
+        <!-- НОВЫЙ БЛОК: Видеоплеер -->
+        <section class="fade-in-up">
+            <div class="bg-gray-800 rounded-lg p-8 md:p-12 text-center">
+                <h2 class="section-title text-white">Посмотрите, как это работает изнутри</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-400">Я записал короткое видео, где рассказываю о философии программы и показываю, как выглядит личный кабинет участника.</p>
+                <div class="mt-8 rounded-lg overflow-hidden shadow-2xl">
+                    <style>wistia-player[media-id='b1bfiuezcx']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/b1bfiuezcx/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
+                    <wistia-player media-id="b1bfiuezcx" aspect="1.7777777777777777"></wistia-player>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <!-- Модальное окно -->
@@ -463,6 +501,10 @@
             <p>&copy; 2025 Дмитрий Мухин. Программа Body Balance.</p>
         </div>
     </footer>
+
+    <!-- Скрипты Wistia -->
+    <script src="https://fast.wistia.com/player.js" async></script>
+    <script src="https://fast.wistia.com/embed/b1bfiuezcx.js" async type="module"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
