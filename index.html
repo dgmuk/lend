@@ -132,7 +132,6 @@
             opacity: 1;
         }
 
-        /* ИСПРАВЛЕНО: Анимация для заголовка */
         .title-glow {
             animation: title-breathing 3s infinite ease-in-out;
         }
@@ -146,6 +145,22 @@
             100% {
                 text-shadow: 0 0 10px rgba(249, 115, 22, 0.4), 0 0 20px rgba(249, 115, 22, 0.2);
             }
+        }
+        
+        /* --- СТИЛИ ДЛЯ FAQ --- */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+        .faq-item.is-open .faq-answer {
+            max-height: 500px; /* Достаточно большая высота для любого ответа */
+        }
+        .faq-arrow {
+            transition: transform 0.3s ease;
+        }
+        .faq-item.is-open .faq-arrow {
+            transform: rotate(180deg);
         }
     </style>
 </head>
@@ -283,6 +298,15 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- НОВЫЙ БЛОК ПОСЛЕ 9 НЕДЕЛЬ -->
+                <div class="mt-10 fade-in-up">
+                    <div class="bg-gray-800 p-6 rounded-lg border border-orange-500/50 interactive-card text-center">
+                         <h3 class="font-bold text-xl text-white mt-1">💡 После 9 недель:</h3>
+                        <p class="mt-2 text-gray-400 max-w-xl mx-auto">Ты не просто получаешь результат, но и знаешь, как его сохранить. Вся система питания, тренировок и привычек станет твоим новым стилем жизни 💪</p>
+                    </div>
+                </div>
+
                  <div class="text-center mt-12">
                      <a href="#tariffs" class="btn btn-accent inline-block text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg">
                         Хочу получить такую систему
@@ -429,6 +453,7 @@
                 <div class="bg-gray-800 p-8 rounded-lg border-2 border-gray-700 flex flex-col interactive-card">
                     <h3 class="text-2xl font-bold text-white">Базовый</h3>
                     <p class="text-4xl font-black text-white mt-4">28 000 ₽ <span class="text-lg font-medium text-gray-400">/ 9 недель</span></p>
+                    <p class="mt-4 text-sm text-gray-400">Это всего 3 111 рублей в неделю за полное сопровождение и твое преображение.</p>
                     <ul class="mt-6 space-y-3 text-gray-300 flex-grow">
                         <li class="flex items-center">✓ Персональный план питания</li>
                         <li class="flex items-center">✓ Программа тренировок</li>
@@ -444,6 +469,7 @@
                     <div class="absolute top-0 right-8 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-b-lg">ПОПУЛЯРНЫЙ</div>
                     <h3 class="text-2xl font-bold text-white">Расширенный</h3>
                     <p class="text-4xl font-black text-white mt-4">34 000 ₽ <span class="text-lg font-medium text-gray-400">/ 9 недель</span></p>
+                    <p class="mt-4 text-sm text-gray-400">Это всего 3 777 рублей в неделю за полное сопровождение и чек-ап организма.</p>
                     <p class="mt-4 font-bold accent-color">Всё из "Базового" +</p>
                     <ul class="mt-2 space-y-3 text-gray-300 flex-grow">
                         <li class="flex items-center font-bold">✓ Разбор медицинских анализов</li>
@@ -456,11 +482,39 @@
             </div>
         </section>
 
+        <!-- Блок Экономии -->
+        <section class="fade-in-up">
+            <div class="bg-gray-800 rounded-lg p-8 md:p-12 text-center border border-gray-700 interactive-card">
+                <h2 class="text-3xl sm:text-4xl font-black text-white">Простая математика: почему это выгодно?</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-400">Если обращаться к специалистам отдельно, то:</p>
+                <div class="mt-8 text-left max-w-md mx-auto space-y-4">
+                    <div class="flex items-center">
+                        <span class="text-orange-500 mr-4">➖</span>
+                        <span>Персональный тренер в зале – <strong>от 25 000 рублей в месяц.</strong></span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-orange-500 mr-4">➖</span>
+                        <span>Консультация нутрициолога – <strong>от 2 500 рублей за 1 встречу.</strong></span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-orange-500 mr-4">➖</span>
+                        <span>Услуги психолога/коуча – <strong>от 3 000 рублей за 1 встречу.</strong></span>
+                    </div>
+                    <div class="flex items-center">
+                        <span class="text-orange-500 mr-4">➖</span>
+                        <span>Интерпретация анализов – <strong>от 5 000 рублей и выше.</strong></span>
+                    </div>
+                </div>
+                <p class="mt-8 max-w-2xl mx-auto text-lg text-gray-300 font-semibold">За 9 недель это легко превысит 70 000 рублей. И всё это без гарантии, что специалисты будут работать с тобой в комплексе.</p>
+                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-400">В программе <span class="font-bold text-white">Body Balance</span> ты получаешь полную систему ведения – от диагностики и плана действий до психологической поддержки и корректировок – <span class="accent-color font-bold">всё включено в один продукт!</span></p>
+            </div>
+        </section>
+
         <!-- Блок 8: Финальный призыв -->
         <section id="form" class="fade-in-up">
-            <div class="bg-gray-800 rounded-lg p-8 md:p-12 text-center">
-                <h2 class="section-title text-white">Готов вернуть себе тело, которым можно гордиться?</h2>
-                <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-400">Хватит откладывать. Каждый день промедления — это еще один день жизни в теле, которое тебя не устраивает. Сделай первый шаг прямо сейчас. Оставь заявку, мы созвонимся для короткой диагностики, и если я пойму, что могу тебе помочь — начнем твою трансформацию.</p>
+            <div class="bg-gray-800 rounded-lg p-8 md:p-12 text-center interactive-card">
+                <h2 class="text-3xl sm:text-4xl font-black text-white">Готов вернуть себе тело, которым можно гордиться?</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-base md:text-lg leading-relaxed text-gray-400">Хватит откладывать. Каждый день промедления — это еще один день жизни в теле, которое тебя не устраивает. Сделай первый шаг прямо сейчас. Оставь заявку, мы созвонимся для короткой диагностики, и если я пойму, что могу тебе помочь — начнем твою трансформацию.</p>
                 <form id="tg-form" class="mt-8 max-w-lg mx-auto space-y-4">
                     <input type="text" id="tg-name" placeholder="Ваше имя" class="w-full p-4 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
                     <input type="text" id="tg-contact" placeholder="Ваш Телефон / Telegram" class="w-full p-4 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
@@ -472,14 +526,123 @@
             </div>
         </section>
 
-        <!-- НОВЫЙ БЛОК: Видеоплеер -->
+        <!-- Блок с видеоплеером -->
         <section class="fade-in-up">
-            <div class="bg-gray-800 rounded-lg p-8 md:p-12 text-center">
-                <h2 class="section-title text-white">Посмотрите, как это работает изнутри</h2>
+            <div class="bg-gray-800 rounded-lg p-8 md:p-12 text-center interactive-card">
+                <h2 class="text-3xl sm:text-4xl font-black text-white">Посмотрите, как это работает изнутри</h2>
                 <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-400">Я записал короткое видео, где рассказываю о философии программы и показываю, как выглядит личный кабинет участника.</p>
                 <div class="mt-8 rounded-lg overflow-hidden shadow-2xl">
                     <style>wistia-player[media-id='b1bfiuezcx']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/b1bfiuezcx/swatch'); display: block; filter: blur(5px); padding-top:56.25%; }</style>
                     <wistia-player media-id="b1bfiuezcx" aspect="1.7777777777777777"></wistia-player>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Блок FAQ -->
+        <section class="fade-in-up">
+            <div class="bg-gray-800 rounded-lg p-8 md:p-12 interactive-card">
+                <h2 class="section-title text-center text-white">Остались вопросы?</h2>
+                <div class="mt-8 max-w-3xl mx-auto" id="faq-container">
+                    <!-- Вопрос 1 -->
+                    <div class="faq-item border-b border-gray-700">
+                        <button class="faq-question flex justify-between items-center w-full text-left py-6">
+                            <span class="text-lg font-semibold text-white">Как я смогу похудеть, если раньше все диеты и тренировки не давали результата?</span>
+                            <svg class="faq-arrow w-6 h-6 text-orange-500 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 pb-6 pr-10">Мы начинаем с тщательного анализа твоего текущего состояния – замеры, анкета и анализы крови помогут выявить, что мешает твоему успеху. Индивидуальный план питания и тренировок, разработанный специально для тебя, устранит ошибки прошлого и поможет добиться стабильного результата.</p>
+                        </div>
+                    </div>
+                    <!-- Вопрос 2 -->
+                    <div class="faq-item border-b border-gray-700">
+                        <button class="faq-question flex justify-between items-center w-full text-left py-6">
+                            <span class="text-lg font-semibold text-white">А если у меня не будет времени на тренировки и готовку?</span>
+                            <svg class="faq-arrow w-6 h-6 text-orange-500 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 pb-6 pr-10">Программа адаптирована под твой плотный график. Гибкий график тренировок и простое, сбалансированное меню позволят тебе эффективно заниматься без больших временных затрат.</p>
+                        </div>
+                    </div>
+                    <!-- Вопрос 3 -->
+                    <div class="faq-item border-b border-gray-700">
+                        <button class="faq-question flex justify-between items-center w-full text-left py-6">
+                            <span class="text-lg font-semibold text-white">Что, если я не увижу результата даже при выполнении программы?</span>
+                            <svg class="faq-arrow w-6 h-6 text-orange-500 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 pb-6 pr-10">Мы регулярно контролируем твой прогресс, проводим замеры и корректируем программу по мере необходимости. Если ты строго следуешь рекомендациям, а результат не приходит, я лично доработаю план, чтобы обеспечить твой успех.</p>
+                        </div>
+                    </div>
+                    <!-- Вопрос 4 -->
+                    <div class="faq-item border-b border-gray-700">
+                        <button class="faq-question flex justify-between items-center w-full text-left py-6">
+                            <span class="text-lg font-semibold text-white">Я боюсь получить травму на тренировках. Как это избежать?</span>
+                            <svg class="faq-arrow w-6 h-6 text-orange-500 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 pb-6 pr-10">Программа тренировок разрабатывается с учетом твоего уровня подготовки и включает только безопасные упражнения с пошаговыми видеоуроками. Мы начинаем с легких нагрузок и постепенно увеличиваем их, чтобы тело адаптировалось без риска травм.</p>
+                        </div>
+                    </div>
+                    <!-- Вопрос 5 -->
+                    <div class="faq-item border-b border-gray-700">
+                        <button class="faq-question flex justify-between items-center w-full text-left py-6">
+                            <span class="text-lg font-semibold text-white">А если я снова срываюсь на сладкое или вредную еду?</span>
+                            <svg class="faq-arrow w-6 h-6 text-orange-500 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 pb-6 pr-10">Персональный план питания даст тебе конкретные рекомендации и вкусные альтернативы, которые помогут контролировать тягу к сладкому. Постоянная поддержка и обратная связь помогут своевременно скорректировать привычки и избежать срывов.</p>
+                        </div>
+                    </div>
+                    <!-- Вопрос 6 -->
+                    <div class="faq-item border-b border-gray-700">
+                        <button class="faq-question flex justify-between items-center w-full text-left py-6">
+                            <span class="text-lg font-semibold text-white">Как мне быть уверенным, что я получу индивидуальную программу, а не шаблонное решение?</span>
+                            <svg class="faq-arrow w-6 h-6 text-orange-500 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 pb-6 pr-10">Я провожу детальный анализ твоего состояния, учитывая твои привычки, образ жизни и даже анализы крови. На основе этой информации я создаю уникальный план, адаптированный под твои цели и график – никаких универсальных решений.</p>
+                        </div>
+                    </div>
+                    <!-- Вопрос 7 -->
+                    <div class="faq-item border-b border-gray-700">
+                        <button class="faq-question flex justify-between items-center w-full text-left py-6">
+                            <span class="text-lg font-semibold text-white">А что если я не смогу справиться с программой из-за усталости или стресса?</span>
+                            <svg class="faq-arrow w-6 h-6 text-orange-500 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 pb-6 pr-10">Программа включает психологическую поддержку и регулярные консультации, чтобы помочь тебе справляться с трудностями и сохранять мотивацию. Я буду сопровождать тебя на каждом шаге, помогая не терять энергию и уверенность.</p>
+                        </div>
+                    </div>
+                    <!-- Вопрос 8 -->
+                    <div class="faq-item border-b border-gray-700">
+                        <button class="faq-question flex justify-between items-center w-full text-left py-6">
+                            <span class="text-lg font-semibold text-white">Могу ли я реально вписать эту программу в свою жизнь, если у меня очень плотный график?</span>
+                            <svg class="faq-arrow w-6 h-6 text-orange-500 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 pb-6 pr-10">Да, программа разработана таким образом, чтобы интегрироваться в твой повседневный график. Гибкий режим занятий и питания позволяет выбрать удобное время для тренировок и приемов пищи, не нарушая твоего основного расписания.</p>
+                        </div>
+                    </div>
+                    <!-- Вопрос 9 -->
+                    <div class="faq-item border-b border-gray-700">
+                        <button class="faq-question flex justify-between items-center w-full text-left py-6">
+                            <span class="text-lg font-semibold text-white">А если я вложу деньги, а программа не принесёт ожидаемых изменений?</span>
+                            <svg class="faq-arrow w-6 h-6 text-orange-500 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 pb-6 pr-10">Я настолько уверен в своей методике, что предоставляю гарантии: возможность возврата средств в первые 5 дней и корректировку программы до достижения результата. Ты инвестируешь в проверенную систему, где все этапы рассчитаны на твой успех.</p>
+                        </div>
+                    </div>
+                    <!-- Вопрос 10 -->
+                    <div class="faq-item border-b border-gray-700">
+                        <button class="faq-question flex justify-between items-center w-full text-left py-6">
+                            <span class="text-lg font-semibold text-white">Как я могу быть уверен, что это не пустые обещания и технология действительно работает?</span>
+                            <svg class="faq-arrow w-6 h-6 text-orange-500 flex-shrink-0 ml-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p class="text-gray-400 pb-6 pr-10">Методика подтверждена реальными кейсами и отзывами клиентов, которые уже добились впечатляющих результатов. Мой индивидуальный подход, постоянный контроль прогресса и гарантии (возврат средств, пробный период) обеспечивают уверенность в том, что результат неизбежен.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -624,6 +787,18 @@
                     if (e.key === 'Escape' && modal.classList.contains('is-visible')) {
                         closeModal();
                     }
+                });
+            }
+
+            // --- СКРИПТ ДЛЯ FAQ ---
+            const faqContainer = document.getElementById('faq-container');
+            if (faqContainer) {
+                const faqItems = faqContainer.querySelectorAll('.faq-item');
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question');
+                    question.addEventListener('click', () => {
+                        item.classList.toggle('is-open');
+                    });
                 });
             }
         });
