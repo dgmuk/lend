@@ -19,14 +19,6 @@
         .accent-color {
             color: #F97316; /* orange-500 */
         }
-        .btn-accent {
-            background-color: #F97316;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        .btn-accent:hover {
-            background-color: #EA580C; /* orange-600 */
-            transform: translateY(-3px);
-        }
         .section-title {
             font-weight: 900;
             font-size: 2.25rem; /* text-4xl */
@@ -38,31 +30,33 @@
                 line-height: 1.1;
             }
         }
+
+        /* --- СТИЛИ ТАЙМЛАЙНА --- */
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 1.25rem; /* 5 */
-            top: 1.25rem;
-            bottom: -1.25rem;
+            left: 0.875rem; /* 14px */
+            top: 2rem; /* Начинается от центра точки */
+            bottom: -2.5rem; /* Протягивается до следующего элемента */
             width: 2px;
             background-color: #374151; /* gray-700 */
-            transform: translateX(-50%);
         }
         .timeline-item:last-child::before {
             display: none;
         }
         .timeline-dot {
             position: absolute;
-            left: 1.25rem;
-            top: 0.75rem;
+            left: 0.875rem; /* 14px */
+            top: 2rem; /* Выравнивание по центру первой строки */
             width: 1rem;
             height: 1rem;
             border-radius: 9999px;
             background-color: #F97316;
             transform: translateX(-50%);
-            border: 2px solid #111827;
+            border: 3px solid #111827;
         }
-        /* Animation */
+        
+        /* --- АНИМАЦИИ --- */
         .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
@@ -72,6 +66,53 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .btn {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            animation: pulse-glow 2.5s infinite ease-in-out;
+        }
+        .btn:hover {
+            transform: scale(1.08); /* Увеличение при наведении стало чуть больше */
+            animation: none;
+            box-shadow: 0 0 35px rgba(249, 115, 22, 0.8); /* Свечение при наведении стало ярче */
+        }
+
+        /* ИЗМЕНЕНО: Анимация мерцания стала более явной */
+        @keyframes pulse-glow {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(249, 115, 22, 0.3);
+            }
+            50% {
+                transform: scale(1.03); /* Добавлено легкое увеличение */
+                box-shadow: 0 0 30px rgba(249, 115, 22, 0.5); /* Свечение стало интенсивнее */
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(249, 115, 22, 0.3);
+            }
+        }
+
+        .btn-accent {
+            background-color: #F97316;
+        }
+        .btn-accent:hover {
+            background-color: #EA580C;
+        }
+        .btn-secondary {
+            background-color: #374151;
+        }
+        .btn-secondary:hover {
+            background-color: #4B5563;
+        }
+
+        .interactive-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
+        }
     </style>
 </head>
 <body class="text-gray-300">
@@ -80,8 +121,8 @@
     <section class="bg-gray-900 py-24 sm:py-40">
         <div class="container mx-auto max-w-5xl px-6 text-center text-white">
             <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tight leading-tight">Устал от живота, вечной усталости и сорванных диет?</h1>
-            <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-300">Верни энергию, рельеф и контроль над своим телом за 9 недель по системной программе Body Balance. Без голодовок и жизни в спортзале.</p>
-            <a href="#program" class="btn-accent inline-block mt-10 text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg">
+            <p class="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-gray-300">Верни энергию, рельеф и контроль над своим телом за 9 недель по системной <span class="accent-color font-bold">программе Body Balance</span>. Без голодовок и жизни в спортзале.</p>
+            <a href="#program" class="btn btn-accent inline-block mt-10 text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg">
                 Узнать подробнее о программе
             </a>
         </div>
@@ -93,19 +134,19 @@
         <section class="fade-in-up">
             <h2 class="section-title text-center text-white">Если хотя бы 2 из этих пунктов про тебя — <br>ты в нужном месте:</h2>
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
                     <h3 class="font-bold text-xl text-white">Вес растет, а энергия на нуле.</h3>
                     <p class="mt-2 text-gray-400">Утром тяжело вставать, а к вечеру нет сил даже на семью.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
                     <h3 class="font-bold text-xl text-white">"Стрессовый" живот не уходит.</h3>
                     <p class="mt-2 text-gray-400">Заедаешь напряженный день пиццей или сладким, а потом винишь себя.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
                     <h3 class="font-bold text-xl text-white">Пробовал худеть, но всегда срываешься.</h3>
                     <p class="mt-2 text-gray-400">Каждая новая диета заканчивается разочарованием и мыслью "я слабохарактерный".</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
                     <h3 class="font-bold text-xl text-white">В зеркале видишь уставшего мужчину.</h3>
                     <p class="mt-2 text-gray-400">А хочется снова чувствовать себя сильным, здоровым и уверенным.</p>
                 </div>
@@ -115,7 +156,7 @@
         <!-- Блок 3: Представление Решения и Эксперта -->
         <section class="fade-in-up">
             <div class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center">
-                <div class="md:col-span-2">
+                <div class="md:col-span-2 interactive-card">
                     <img src="images/dmitry-consult.jpg" alt="Эксперт Дмитрий Мухин в процессе консультации" class="rounded-lg shadow-2xl w-full">
                 </div>
                 <div class="md:col-span-3">
@@ -131,65 +172,81 @@
             <h2 class="section-title text-center text-white">Полная перезагрузка твоего тела и привычек за 9 недель</h2>
             <div class="mt-12 max-w-3xl mx-auto">
                 <div class="space-y-10">
-                    <!-- Timeline Item -->
-                    <div class="relative pl-10 timeline-item fade-in-up">
+                    <!-- Неделя 1 -->
+                    <div class="relative pl-8 timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
-                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 1</p>
-                        <h3 class="font-bold text-xl text-white mt-1">Диагностика и фундамент</h3>
-                        <p class="mt-2">Провожу полный анализ твоего образа жизни, питания, стресса. Рассчитываем персональный план питания и тренировок, на который ты будешь опираться.</p>
+                        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                            <p class="text-sm font-bold accent-color">НЕДЕЛЯ 1</p>
+                            <h3 class="font-bold text-xl text-white mt-1">Диагностика и фундамент</h3>
+                            <p class="mt-2 text-gray-400">Провожу полный анализ твоего образа жизни, питания, стресса. Рассчитываем персональный план питания и тренировок, на который ты будешь опираться.</p>
+                        </div>
                     </div>
-                    <!-- Timeline Item -->
-                    <div class="relative pl-10 timeline-item fade-in-up">
+                    <!-- Неделя 2 -->
+                    <div class="relative pl-8 timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
-                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 2</p>
-                        <h3 class="font-bold text-xl text-white mt-1">Система вместо силы воли</h3>
-                        <p class="mt-2">Создаем ритуалы, которые работают на автомате, даже когда нет мотивации.</p>
+                        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                            <p class="text-sm font-bold accent-color">НЕДЕЛЯ 2</p>
+                            <h3 class="font-bold text-xl text-white mt-1">Система вместо силы воли</h3>
+                            <p class="mt-2 text-gray-400">Создаем ритуалы, которые работают на автомате, даже когда нет мотивации.</p>
+                        </div>
                     </div>
-                    <!-- Timeline Item -->
-                    <div class="relative pl-10 timeline-item fade-in-up">
+                    <!-- Неделя 3 -->
+                    <div class="relative pl-8 timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
-                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 3</p>
-                        <h3 class="font-bold text-xl text-white mt-1">Стратегия "возврата", а не "срыва"</h3>
-                        <p class="mt-2">Учимся выходить из откатов без чувства вины и продолжать движение.</p>
+                        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                            <p class="text-sm font-bold accent-color">НЕДЕЛЯ 3</p>
+                            <h3 class="font-bold text-xl text-white mt-1">Стратегия "возврата", а не "срыва"</h3>
+                            <p class="mt-2 text-gray-400">Учимся выходить из откатов без чувства вины и продолжать движение.</p>
+                        </div>
                     </div>
-                    <!-- Timeline Item -->
-                    <div class="relative pl-10 timeline-item fade-in-up">
+                    <!-- Неделя 4 -->
+                    <div class="relative pl-8 timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
-                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 4</p>
-                        <h3 class="font-bold text-xl text-white mt-1">Как действовать, когда "не хочется"</h3>
-                        <p class="mt-2">Осваиваем технику «5 минут победы», чтобы победить прокрастинацию.</p>
+                        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                            <p class="text-sm font-bold accent-color">НЕДЕЛЯ 4</p>
+                            <h3 class="font-bold text-xl text-white mt-1">Как действовать, когда "не хочется"</h3>
+                            <p class="mt-2 text-gray-400">Осваиваем технику «5 минут победы», чтобы победить прокрастинацию.</p>
+                        </div>
                     </div>
-                     <!-- Timeline Item -->
-                    <div class="relative pl-10 timeline-item fade-in-up">
+                    <!-- Неделя 5 -->
+                     <div class="relative pl-8 timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
-                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 5</p>
-                        <h3 class="font-bold text-xl text-white mt-1">Уверенность и новый образ тела</h3>
-                        <p class="mt-2">Работаем с восприятием себя и учимся видеть реальные изменения, а не только недостатки.</p>
+                        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                            <p class="text-sm font-bold accent-color">НЕДЕЛЯ 5</p>
+                            <h3 class="font-bold text-xl text-white mt-1">Уверенность и новый образ тела</h3>
+                            <p class="mt-2 text-gray-400">Работаем с восприятием себя и учимся видеть реальные изменения, а не только недостатки.</p>
+                        </div>
                     </div>
-                     <!-- Timeline Item -->
-                    <div class="relative pl-10 timeline-item fade-in-up">
+                    <!-- Неделя 6 -->
+                     <div class="relative pl-8 timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
-                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 6</p>
-                        <h3 class="font-bold text-xl text-white mt-1">Разрыв цепочки "стресс-еда"</h3>
-                        <p class="mt-2">Находим твои эмоциональные триггеры и учимся справляться со стрессом без еды.</p>
+                        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                            <p class="text-sm font-bold accent-color">НЕДЕЛЯ 6</p>
+                            <h3 class="font-bold text-xl text-white mt-1">Разрыв цепочки "стресс-еда"</h3>
+                            <p class="mt-2 text-gray-400">Находим твои эмоциональные триггеры и учимся справляться со стрессом без еды.</p>
+                        </div>
                     </div>
-                     <!-- Timeline Item -->
-                    <div class="relative pl-10 timeline-item fade-in-up">
+                    <!-- Неделя 7 -->
+                     <div class="relative pl-8 timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
-                        <p class="text-sm font-bold accent-color">НЕДЕЛЯ 7</p>
-                        <h3 class="font-bold text-xl text-white mt-1">Борьба с перфекционизмом</h3>
-                        <p class="mt-2">Учимся ценить свой прогресс и избавляемся от ловушки "я сделал мало".</p>
+                        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                            <p class="text-sm font-bold accent-color">НЕДЕЛЯ 7</p>
+                            <h3 class="font-bold text-xl text-white mt-1">Борьба с перфекционизмом</h3>
+                            <p class="mt-2 text-gray-400">Учимся ценить свой прогресс и избавляемся от ловушки "я сделал мало".</p>
+                        </div>
                     </div>
-                    <!-- Timeline Item -->
-                    <div class="relative pl-10 timeline-item fade-in-up">
+                    <!-- Недели 8-9 -->
+                    <div class="relative pl-8 timeline-item fade-in-up">
                         <div class="timeline-dot"></div>
-                        <p class="text-sm font-bold accent-color">НЕДЕЛИ 8-9</p>
-                        <h3 class="font-bold text-xl text-white mt-1">Финал и новый старт</h3>
-                        <p class="mt-2">Фиксируем результат и создаем план, как поддерживать форму самостоятельно и не откатиться назад.</p>
+                        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
+                            <p class="text-sm font-bold accent-color">НЕДЕЛИ 8-9</p>
+                            <h3 class="font-bold text-xl text-white mt-1">Финал и новый старт</h3>
+                            <p class="mt-2 text-gray-400">Фиксируем результат и создаем план, как поддерживать форму самостоятельно и не откатиться назад.</p>
+                        </div>
                     </div>
                 </div>
                  <div class="text-center mt-12">
-                     <a href="#tariffs" class="btn-accent inline-block text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg">
+                     <a href="#tariffs" class="btn btn-accent inline-block text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg">
                         Хочу получить такую систему
                     </a>
                  </div>
@@ -200,28 +257,27 @@
         <section class="fade-in-up">
             <h2 class="section-title text-center text-white">Внутри программы тебя ждёт:</h2>
             <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card -->
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
                     <h3 class="font-bold text-xl text-white">Персональный план питания</h3>
                     <p class="mt-2 text-gray-400">Адаптированный под твой график и цели, без жёстких ограничений.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
                     <h3 class="font-bold text-xl text-white">Программа тренировок (дом/зал)</h3>
                     <p class="mt-2 text-gray-400">3-5 занятий в неделю, которые реально работают для твоей цели.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
                     <h3 class="font-bold text-xl text-white">9 еженедельных видео-уроков</h3>
                     <p class="mt-2 text-gray-400">Короткие и ёмкие видео (3-6 минут) по психологии и системным действиям.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
                     <h3 class="font-bold text-xl text-white">Практические инструменты</h3>
                     <p class="mt-2 text-gray-400">Интерактивные чек-листы и инструкции для внедрения привычек.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
                     <h3 class="font-bold text-xl text-white">Моя личная поддержка в Telegram</h3>
                     <p class="mt-2 text-gray-400">Ежедневные отчёты, ответы на вопросы, коррекция плана.</p>
                 </div>
-                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 interactive-card">
                     <h3 class="font-bold text-xl text-white">Разбор анализов (опция)</h3>
                     <p class="mt-2 text-gray-400">Корректировка плана на основе твоих медицинских показателей.</p>
                 </div>
@@ -232,19 +288,18 @@
         <section class="fade-in-up">
             <h2 class="section-title text-center text-white">Это не просто обещания. <br>Это реальные результаты моих клиентов.</h2>
             <div class="text-center mt-6">
-                <div class="inline-flex bg-gray-800 border border-gray-700 rounded-lg p-4 text-center mx-2">
+                <div class="inline-flex bg-gray-800 border border-gray-700 rounded-lg p-4 text-center mx-2 interactive-card">
                     <p class="text-3xl font-black accent-color">-3-7 кг</p>
                     <p class="ml-3 text-left text-sm">Средний результат<br>за 9 недель</p>
                 </div>
-                 <div class="inline-flex bg-gray-800 border border-gray-700 rounded-lg p-4 text-center mx-2 mt-4 sm:mt-0">
+                 <div class="inline-flex bg-gray-800 border border-gray-700 rounded-lg p-4 text-center mx-2 mt-4 sm:mt-0 interactive-card">
                     <p class="text-3xl font-black accent-color">90%</p>
                     <p class="ml-3 text-left text-sm">Клиентов сохраняют<br>результат через год</p>
                 </div>
             </div>
 
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Case 1 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
+                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 interactive-card">
                     <img src="images/alexey.jpg" alt="Клиент Алексей, результат программы Body Balance" class="w-full h-64 object-cover object-center">
                     <div class="p-6">
                         <h3 class="font-bold text-xl text-white">Алексей, 42 года, руководитель</h3>
@@ -255,8 +310,7 @@
                         </blockquote>
                     </div>
                 </div>
-                <!-- Case 2 -->
-                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700">
+                <div class="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 interactive-card">
                     <img src="images/mikhail.jpg" alt="Клиент Михаил, результат программы Body Balance" class="w-full h-64 object-cover object-center">
                     <div class="p-6">
                         <h3 class="font-bold text-xl text-white">Михаил, 38 лет, IT-директор</h3>
@@ -274,8 +328,7 @@
         <section id="tariffs" class="fade-in-up">
             <h2 class="section-title text-center text-white">Выбери свой формат для старта</h2>
             <div class="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Tariff 1 -->
-                <div class="bg-gray-800 p-8 rounded-lg border-2 border-gray-700 flex flex-col">
+                <div class="bg-gray-800 p-8 rounded-lg border-2 border-gray-700 flex flex-col interactive-card">
                     <h3 class="text-2xl font-bold text-white">Базовый</h3>
                     <p class="text-4xl font-black text-white mt-4">28 000 ₽ <span class="text-lg font-medium text-gray-400">/ 9 недель</span></p>
                     <ul class="mt-6 space-y-3 text-gray-300 flex-grow">
@@ -285,12 +338,11 @@
                         <li class="flex items-center">✓ Практические инструменты</li>
                         <li class="flex items-center">✓ Личная поддержка в Telegram</li>
                     </ul>
-                    <a href="#form" class="mt-8 block w-full text-center bg-gray-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-600 transition-colors">
+                    <a href="#form" class="btn btn-secondary mt-8 block w-full text-center text-white font-bold py-3 px-6 rounded-lg">
                         Оставить заявку
                     </a>
                 </div>
-                <!-- Tariff 2 -->
-                <div class="bg-gray-800 p-8 rounded-lg border-2 border-orange-500 relative flex flex-col">
+                <div class="bg-gray-800 p-8 rounded-lg border-2 border-orange-500 relative flex flex-col interactive-card">
                     <div class="absolute top-0 right-8 bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-b-lg">ПОПУЛЯРНЫЙ</div>
                     <h3 class="text-2xl font-bold text-white">Расширенный</h3>
                     <p class="text-4xl font-black text-white mt-4">34 000 ₽ <span class="text-lg font-medium text-gray-400">/ 9 недель</span></p>
@@ -299,7 +351,7 @@
                         <li class="flex items-center font-bold">✓ Разбор медицинских анализов</li>
                         <li class="flex items-center font-bold">✓ Углубленная корректировка нутриентов</li>
                     </ul>
-                    <a href="#form" class="btn-accent mt-8 block w-full text-center text-white font-bold py-3 px-6 rounded-lg">
+                    <a href="#form" class="btn btn-accent mt-8 block w-full text-center text-white font-bold py-3 px-6 rounded-lg">
                         Оставить заявку
                     </a>
                 </div>
@@ -314,7 +366,7 @@
                 <form id="tg-form" class="mt-8 max-w-lg mx-auto space-y-4">
                     <input type="text" id="tg-name" placeholder="Ваше имя" class="w-full p-4 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
                     <input type="text" id="tg-contact" placeholder="Ваш Телефон / Telegram" class="w-full p-4 bg-gray-700 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500" required>
-                    <button type="submit" class="btn-accent w-full text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg disabled:opacity-50">
+                    <button type="submit" class="btn btn-accent w-full text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg disabled:opacity-50">
                         Начать трансформацию
                     </button>
                     <div id="form-message" class="mt-4 text-sm"></div>
