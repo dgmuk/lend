@@ -308,8 +308,8 @@
 
                  <div class="text-center mt-12">
                      <a href="#tariffs" class="btn btn-accent inline-block text-white font-bold py-4 px-10 rounded-lg text-lg shadow-lg">
-                        Хочу получить такую систему
-                    </a>
+                         Хочу получить такую систему
+                     </a>
                  </div>
             </div>
         </section>
@@ -686,16 +686,12 @@
 
             const tgForm = document.getElementById('tg-form');
             if (tgForm) {
-                const formMessage = document.getElementById('form-message');
-                const submitButton = tgForm.querySelector('button[type="submit"]');
-
+                // ✅ ЭТОТ БЛОК БЫЛ ПОЛНОСТЬЮ ЗАМЕНЕН НА БЕЗОПАСНЫЙ ВАРИАНТ
                 tgForm.addEventListener('submit', async (e) => {
                     e.preventDefault();
 
-                    const TOKEN = "";
-                    const CHAT_ID = "-1001715276709";
-                    const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-
+                    const formMessage = document.getElementById('form-message');
+                    const submitButton = tgForm.querySelector('button[type="submit"]');
                     const nameInput = document.getElementById('tg-name');
                     const contactInput = document.getElementById('tg-contact');
 
@@ -712,27 +708,30 @@
                     message += `<b>Имя: </b> ${nameInput.value}\n`;
                     message += `<b>Контакт: </b> ${contactInput.value}`;
 
+                    // Новый, безопасный путь к вашему бэкенду
+                    const apiEndpoint = '/api/telegram';
+                    const CHAT_ID = '-1001715276709';
+
                     try {
-                        const response = await fetch(URI_API, {
+                        const response = await fetch(apiEndpoint, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
                             body: JSON.stringify({
                                 chat_id: CHAT_ID,
-                                parse_mode: 'html',
                                 text: message
                             })
                         });
 
                         const data = await response.json();
 
-                        if (data.ok) {
+                        if (response.ok) {
                             formMessage.textContent = '✅ Заявка успешно отправлена! Скоро я с вами свяжусь.';
                             formMessage.className = 'mt-4 text-sm text-green-400';
                             tgForm.reset();
                         } else {
-                            throw new Error(data.description);
+                            throw new Error(data.message || 'Неизвестная ошибка сервера');
                         }
 
                     } catch (error) {
