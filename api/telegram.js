@@ -1,21 +1,25 @@
-// ЭТОТ КОД ДОЛЖЕН БЫТЬ В ФАЙЛЕ /api/telegram.js
-// Это ваша "кухня"
-export default async function handler(request, response) {
+// ✅ ИСПРАВЛЕННЫЙ КОД ДЛЯ ФАЙЛА /api/telegram.js
+// Мы заменили 'export default' на 'module.exports', чтобы обеспечить совместимость.
+
+module.exports = async (request, response) => {
+    // Проверяем, что запрос пришел методом POST.
     if (request.method !== 'POST') {
         return response.status(405).json({ message: 'Разрешен только метод POST' });
     }
 
+    // Безопасно получаем токен из переменных окружения Vercel.
     const token = process.env.TELEGRAM_TOKEN;
     const telegramApiUrl = `https://api.telegram.org/bot${token}/sendMessage`;
 
     try {
-        // Сервер получает chat_id и text из запроса от фронтенда
+        // Получаем данные, которые отправил ваш сайт.
         const { chat_id, text } = request.body;
 
         if (!chat_id || !text) {
             return response.status(400).json({ message: 'Ошибка: Не указан "chat_id" или "text".' });
         }
 
+        // Отправляем запрос в Telegram от имени сервера.
         const telegramResponse = await fetch(telegramApiUrl, {
             method: 'POST',
             headers: {
@@ -37,11 +41,7 @@ export default async function handler(request, response) {
         }
 
     } catch (error) {
+        // В случае непредвиденной ошибки на сервере, отправляем ответ с ошибкой.
         return response.status(500).json({ message: 'Внутренняя ошибка сервера', error: error.message });
     }
-}
-    } catch (error) {
-        console.error('Сетевая ошибка или ошибка выполнения:', error);
-        // Обработка ошибок сети
-    }
-}
+};
