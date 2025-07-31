@@ -1,35 +1,45 @@
-// Эта функция будет отправлять данные на ваш бэкенд на Vercel
-async function sendMessage(messageText) {
-    // URL вашего бэкенда. Используем относительный путь, это лучшая практика.
-    const apiEndpoint = '/api/telegram';
+// ЭТОТ КОД ДОЛЖЕН БЫТЬ В ФАЙЛЕ /api/telegram.js
+// Это ваша "кухня"
+export default async function handler(request, response) {
+    if (request.method !== 'POST') {
+        return response.status(405).json({ message: 'Разрешен только метод POST' });
+    }
 
-    // ✅ ВАШ ID ЧАТА УЖЕ ВСТАВЛЕН
-    const CHAT_ID = '-1001715276709';
+    const token = process.env.TELEGRAM_TOKEN;
+    const telegramApiUrl = `https://api.telegram.org/bot${token}/sendMessage`;
 
     try {
-        const response = await fetch(apiEndpoint, {
+        // Сервер получает chat_id и text из запроса от фронтенда
+        const { chat_id, text } = request.body;
+
+        if (!chat_id || !text) {
+            return response.status(400).json({ message: 'Ошибка: Не указан "chat_id" или "text".' });
+        }
+
+        const telegramResponse = await fetch(telegramApiUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            // Отправляем данные на ваш бэкенд в формате JSON
             body: JSON.stringify({
-                chat_id: CHAT_ID,
-                text: messageText,
+                chat_id: chat_id,
+                text: text,
+                parse_mode: 'HTML',
             }),
         });
-
-        // Получаем ответ от нашего бэкенда
-        const data = await response.json();
-
-        if (response.ok) {
-            console.log('Успешно отправлено через бэкенд:', data.message);
-            // Сюда можно добавить код, который показывает пользователю
-            // сообщение об успехе, например: alert('Сообщение отправлено!');
+        
+        const result = await telegramResponse.json();
+        
+        if (result.ok) {
+            return response.status(200).json({ message: 'Сообщение успешно отправлено' });
         } else {
-            console.error('Ошибка от бэкенда:', data.message);
-            // Сюда можно добавить код для отображения ошибки пользователю
+            return response.status(500).json({ message: 'Telegram не смог отправить сообщение', error: result });
         }
+
+    } catch (error) {
+        return response.status(500).json({ message: 'Внутренняя ошибка сервера', error: error.message });
+    }
+}
     } catch (error) {
         console.error('Сетевая ошибка или ошибка выполнения:', error);
         // Обработка ошибок сети
